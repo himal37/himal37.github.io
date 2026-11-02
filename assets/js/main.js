@@ -37,4 +37,30 @@
       }).catch(function () {});
     });
   }
+
+  // Enlarge photos and maps
+  var box = document.getElementById('lightbox');
+  if (box && box.showModal) {
+    var bigImg = box.querySelector('img');
+    var cap = box.querySelector('.lightbox-caption');
+    document.querySelectorAll('.shot-open').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var fig = btn.closest('figure');
+        var small = btn.querySelector('img');
+        var title = fig.querySelector('figcaption .map-title') || fig.querySelector('figcaption');
+        bigImg.src = btn.getAttribute('data-full');
+        bigImg.alt = small.alt;
+        cap.textContent = title ? title.textContent.trim() : '';
+        box.showModal();
+      });
+    });
+    box.querySelector('.lightbox-close').addEventListener('click', function () { box.close(); });
+    box.addEventListener('click', function (e) { if (e.target === box) box.close(); });
+    box.addEventListener('close', function () { bigImg.src = ''; });
+  } else if (box) {
+    // Older browsers: open the full image directly
+    document.querySelectorAll('.shot-open').forEach(function (btn) {
+      btn.addEventListener('click', function () { window.open(btn.getAttribute('data-full'), '_blank'); });
+    });
+  }
 })();

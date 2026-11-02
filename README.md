@@ -7,13 +7,17 @@ Live site: https://himal37.github.io
 ## Structure
 
 ```
-index.html                  Main page (research, publications, experience, education, honours, contact)
+index.html                  Main page (research, projects, publications, experience, photos, maps, skills, education, honours, contact)
 404.html                    Page-not-found page
 experience.html, education.html, publications.html, skills.html
                             Old page addresses; they forward to the matching section of index.html
 assets/css/style.css        Styles
 assets/js/main.js           Navigation highlight and PDF link check
-assets/img/                 Photo, link-preview image, favicon
+assets/img/                 Main photo, link-preview image, favicon
+assets/img/photos/          Work photos (large version and a smaller "-sm" version of each)
+assets/img/maps/            Preview images of the maps
+maps/                       Full-resolution map PDFs (A0)
+assets/img/docs/            Gazette notification and Gap Fund feature images
 cv/Md_Rakibul_Hasan_Himal_CV.pdf
 papers/                     Full-text PDFs of papers and theses
 ```
@@ -34,3 +38,9 @@ Until a file is uploaded, its button shows "PDF available on request" instead of
 ## Updating the CV
 
 Replace `cv/Md_Rakibul_Hasan_Himal_CV.pdf` with the new version, keeping the same file name.
+
+## Adding or changing a photo
+
+1. Save two copies of the photo in `assets/img/photos/`: a large one (about 1600 px wide), for example `site-visit.jpg`, and a small one (about 800 px wide) named `site-visit-sm.jpg`.
+2. In `index.html`, find the section that starts with `<!-- PHOTOS -->`, copy one `<figure class="shot">` block, and change the file names, the description in `alt`, and the caption in `<figcaption>`.
+3. Add `wide` or `tall` next to `shot` in the class to make the photo take up two columns or two rows.
